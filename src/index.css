@@ -1,0 +1,149 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  height: 100vh;
+}
+
+.map-pane {
+  position: relative;
+}
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}
+
+.overlay-panel {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  width: min(560px, calc(100% - 2rem));
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.2);
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  align-items: end;
+}
+
+.controls-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input[type='datetime-local'],
+input[type='number'] {
+  width: 100%;
+}
+
+button {
+  border: 1px solid #1d4ed8;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.timeline-row {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.timeline-row input[type='range'] {
+  width: 100%;
+}
+
+.hint {
+  margin: 0.5rem 0;
+  color: #334155;
+}
+
+.error {
+  color: #dc2626;
+  margin: 0.5rem 0 0;
+}
+
+.event-list-pane {
+  border-left: 1px solid #cbd5e1;
+  background: #f8fafc;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.event-list-pane h2 {
+  margin-top: 0;
+}
+
+.event-list-pane ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.event-list-pane li {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.event-list-pane p {
+  margin: 0.2rem 0;
+}
+
+.event-title {
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 70vh 30vh;
+  }
+
+  .event-list-pane {
+    border-left: 0;
+    border-top: 1px solid #cbd5e1;
+  }
+
+  .controls-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
